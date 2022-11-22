@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Todo List</title>
+    <style>
+        html {
+            background-image: linear-gradient(to top, #ad6ae0 0%, #a899d4 100%);
+            min-height: 1000px;
+            font-family: 'helvetica neue';
+        }
+
+        h1 {
+            color: #A683E3;
+            padding: 10px;
+        }
+
+        .box {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        #heading {
+            background-color: white;   
+            text-align: center;
+        }
+        .item {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #F1F1F1;
+        }
+
+ 
+        li {
+            margin: 0;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        form.item {
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        a{
+            margin-right: 20px;
+        }
+
+        input[type="text"] {
+            text-align: center;
+            height: 50px;
+            top: 10px;
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            font-weight: 200;
+            width: 313px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: inset 0 -3px 0 0 #A683E3;
+        }
+
+        ::placeholder {
+            color: grey;
+            opacity: 1;
+        }
+        .fa{
+            right:50px;
+            color:#A683E3
+        }
+        button{
+            border: none;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="heading">
+        <h1> TO DO LIST </h1>
+    </div>
+    <div class="box">
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="list" value="push">
+                <i class="fa fa-plus-square" style="font-size:36px;"></i>
+            </button>            
+        </form>
+        <form action="/pop" method="post">
+            <ul>
+                <%for(i=0; i<newListItems.length; i++){%>
+                    <li class="item" ><%=newListItems[i]%>
+                        <button type="submit" name="index" value=<%=i%>>
+                            <i class="fa fa-close" style="font-size:36px"></i>
+                        </button>
+                    </li>
+                <%}%>
+            </ul>
+        </form>    
+    </div>
+</body>
+</html>
